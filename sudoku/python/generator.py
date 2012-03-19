@@ -17,7 +17,6 @@ class Cell(object):
 
 
 class Puzzle(object):
-
     def __init__(self):
         self.grid = []
         for i in range(81):
@@ -38,7 +37,6 @@ class Puzzle(object):
         tl = (square_row * 27) + (square_column * 3)
 
         result = []
-
         result.extend(self.grid[tl:tl+3])
         result.extend(self.grid[tl+9:tl+12])
         result.extend(self.grid[tl+18:tl+21])
@@ -46,7 +44,6 @@ class Puzzle(object):
         return result
 
     def is_valid(self, index):
-        
         row = [x.value for x in self.fetch_row(index)]
         column = [x.value for x in self.fetch_column(index)]
         square = [x.value for x in self.fetch_square(index)]
@@ -71,7 +68,6 @@ class Puzzle(object):
 
     def display_puzzle(self):
         line = '+-------+-------+-------+'
-
         print line
 
         for i in range(0,9):
@@ -90,7 +86,6 @@ class Puzzle(object):
             if i in (2,5):
                 print line
         print line
-
 
     def build(self):
         index = 0
@@ -113,8 +108,6 @@ class Puzzle(object):
                     else:
                         self.grid[i].generate_choices()
                         self.grid[i].value = None
-
-
         self.display_puzzle()
 
 if __name__ == "__main__":
