@@ -97,7 +97,7 @@ class Puzzle(object):
                     valid = True
                     index += 1
                     break
-            # If it's not valid, we're going to backtrack
+            # If there are no valid choices, we're going to backtrack
             if not valid:
                 for i in range(index,0,-1):
                     if len(self.grid[i].choices):
@@ -105,6 +105,7 @@ class Puzzle(object):
                         self.grid[i].value = None
                         break
                     else:
+                        # Reset the choices for any cells we pass on the way
                         self.grid[i].generate_choices()
                         self.grid[i].value = None
         self.display_puzzle()
