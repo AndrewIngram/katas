@@ -10,10 +10,13 @@ class Cell(object):
 
     def next_value(self):
         return self.choices.pop()
-
-    def __init__(self):
+        
+    def reset(self):
         self.generate_choices()
         self.value = None
+
+    def __init__(self):
+        self.reset()
 
 
 class Puzzle(object):
@@ -105,9 +108,8 @@ class Puzzle(object):
                         self.grid[i].value = None
                         break
                     else:
-                        # Reset the choices for any cells we pass on the way
-                        self.grid[i].generate_choices()
-                        self.grid[i].value = None
+                        # Reset any cells we pass on the way
+                        self.grid[i].reset()
         self.display_puzzle()
 
 if __name__ == "__main__":
