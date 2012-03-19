@@ -93,7 +93,6 @@ class Puzzle(object):
         while index < 81:
             valid = False
             while self.grid[index].choices:
-                #import pdb; pdb.set_trace()
                 if self.is_valid(index):
                     valid = True
                     index += 1
